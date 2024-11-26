@@ -273,7 +273,7 @@ function App() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { icon: <FileCode2 className="w-8 h-8" />, name: "Python" },
-              { icon: <FileCode2 className="w-8 h-8" />, name: "Java" },
+              { icon: <FileCode2 className="w-8 h-8" />, name: "Django" },
               { icon: <FileCode2 className="w-8 h-8" />, name: "PHP" },
               { icon: <FileCode2 className="w-8 h-8" />, name: "JavaScript" },
               { icon: <Code2 className="w-8 h-8" />, name: "React" },
