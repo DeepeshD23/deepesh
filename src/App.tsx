@@ -98,18 +98,15 @@ function App() {
               Deepesh Dagar
             </h1>
             <p className="text-2xl md:text-4xl mb-4 text-gray-300">
-  <span className="text-indigo-400">{"<"}</span> Aspiring Junior Developer | MCA Student{" "}
-  <span className="text-indigo-400">{"/>"}</span>
-</p>
-
-<a href="https://drive.google.com/file/d/1W0186En1dywJsElD-X43328RFgMwrBAI/view?usp=sharing" target="_blank">
-  <button className="bg-gradient-to-r from-indigo-500 to-purple-500 px-8 py-4 rounded-full font-bold hover:opacity-90 transition-all duration-200 shadow-lg shadow-indigo-500/25 flex items-center gap-3 mx-auto mt-4">
-    <Download className=" text-3xl w-5 h-5" />
-    Download Resume
-  </button>
-</a>
-
-
+              <span className="text-indigo-400">{"<"}</span> Aspiring Junior Developer | MCA Student{" "}
+              <span className="text-indigo-400">{"/>"}</span>
+            </p>
+            <a href="https://drive.google.com/file/d/1W0186En1dywJsElD-X43328RFgMwrBAI/view?usp=sharing" target="_blank">
+              <button className="bg-gradient-to-r from-indigo-500 to-purple-500 px-8 py-4 rounded-full font-bold hover:opacity-90 transition-all duration-200 shadow-lg shadow-indigo-500/25 flex items-center gap-3 mx-auto mt-4">
+                <Download className="w-5 h-5" />
+                Download Resume
+              </button>
+            </a>
           </div>
         </div>
       </header>
@@ -157,10 +154,22 @@ function App() {
             <div className="bg-[#1B1B4B]/50 p-8 rounded-lg border border-[#64ffda]/20 hover:border-[#64ffda] transition-all duration-300">
               <div className="flex items-center gap-3 mb-4">
                 <Briefcase className="w-6 h-6 text-[#64ffda]" />
+                <h3 className="text-2xl font-bold">Software Development Intern</h3>
+              </div>
+              <p className="text-[#64ffda] mb-2">Bytegrit Innovations Pvt. Ltd.</p>
+              <p className="mb-4">Jan 2025 - Mar 2025</p>
+              <ul className="list-disc pl-4 space-y-2">
+                <li>Enhanced backend modules and optimized REST APIs using Laravel</li>
+                <li>Integrated admin dashboards with real-time data visualization</li>
+              </ul>
+            </div>
+            <div className="bg-[#1B1B4B]/50 p-8 rounded-lg border border-[#64ffda]/20 hover:border-[#64ffda] transition-all duration-300">
+              <div className="flex items-center gap-3 mb-4">
+                <Briefcase className="w-6 h-6 text-[#64ffda]" />
                 <h3 className="text-2xl font-bold">Data Assistant</h3>
               </div>
               <p className="text-[#64ffda] mb-2">Tax Consultancy Firm (Private)</p>
-              <p className="mb-4">May 2022 - July 2022</p>
+              <p className="mb-4">May 2022 - Jul 2022</p>
               <ul className="list-disc pl-4 space-y-2">
                 <li>Maintained customer records, created new records, debugged records</li>
                 <li>Software used: Tally Prime</li>
@@ -171,10 +180,11 @@ function App() {
                 <Building2 className="w-6 h-6 text-[#64ffda]" />
                 <h3 className="text-2xl font-bold">Process Associate</h3>
               </div>
-              <p className="text-[#64ffda] mb-2">OneWorld Logistics</p>
-              <p className="mb-4">June 2020 - July 2022</p>
-              <ul className="list-disc pl-4">
-                <li>Maintained records of parcels using MS Excel</li>
+              <p className="text-[#64ffda] mb-2">One World Logistics Pvt. Ltd.</p>
+              <p className="mb-4">Jun 2020 - Jul 2022</p>
+              <ul className="list-disc pl-4 space-y-2">
+                <li>Managed operational workflows using Excel for parcel tracking</li>
+                <li>Coordinated with teams to ensure timely updates</li>
               </ul>
             </div>
           </div>
@@ -199,15 +209,17 @@ function App() {
                 <h3 className="text-2xl font-bold">Master of Computer Applications</h3>
               </div>
               <p className="text-[#64ffda] mb-2">GLS University, Ahmedabad</p>
-              <p>Expected Graduation: 2025</p>
+              <p className="mb-2">2023 - 2025</p>
+              <p>Sem 1: 7.07 | Sem 2: 7.02 | Sem 3: 7.15</p>
             </div>
             <div className="bg-[#1B1B4B]/50 p-8 rounded-lg border border-[#64ffda]/20 hover:border-[#64ffda] transition-all duration-300">
               <div className="flex items-center gap-3 mb-4">
                 <School className="w-6 h-6 text-[#64ffda]" />
                 <h3 className="text-2xl font-bold">Bachelor of Computer Applications</h3>
               </div>
-              <p className="text-[#64ffda] mb-2">Mohanlal Sukhadiya University</p>
-              <p>Graduated: 2023</p>
+              <p className="text-[#64ffda] mb-2">Mohanlal Sukhadia University, Udaipur</p>
+              <p className="mb-2">2020 - 2023</p>
+              <p>Percentage: 79%</p>
             </div>
           </div>
         </div>
@@ -226,28 +238,35 @@ function App() {
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-[#1B1B4B]/50 p-8 rounded-lg border border-[#64ffda]/20 hover:border-[#64ffda] transition-all duration-300 transform hover:scale-105">
-              <LineChart className="w-10 h-10 text-[#64ffda] mb-4" />
-              <h3 className="text-2xl font-bold mb-4">Virtual Dashboard</h3>
-              <p className="text-gray-300 mb-4">Data Science Project</p>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-2 py-1 bg-indigo-500/20 rounded-full text-sm">Python</span>
-                <span className="px-2 py-1 bg-indigo-500/20 rounded-full text-sm">Pandas</span>
-                <span className="px-2 py-1 bg-indigo-500/20 rounded-full text-sm">Scikit-learn</span>
-              </div>
-            </div>
-            <div className="bg-[#1B1B4B]/50 p-8 rounded-lg border border-[#64ffda]/20 hover:border-[#64ffda] transition-all duration-300 transform hover:scale-105">
-              <GraduationCap className="w-10 h-10 text-[#64ffda] mb-4" />
-              <h3 className="text-2xl font-bold mb-4">Student Management</h3>
+              <a href="https://github.com/DeepeshD23/Leads" target="_blank" rel="noopener noreferrer">
+                <LineChart className="w-10 h-10 text-[#64ffda] mb-4" />
+                <h3 className="text-2xl font-bold mb-4">Lead Management System</h3>
+              </a>
               <p className="text-gray-300 mb-4">Web Development Project</p>
               <div className="flex flex-wrap gap-2">
-                <span className="px-2 py-1 bg-indigo-500/20 rounded-full text-sm">Django</span>
-                <span className="px-2 py-1 bg-indigo-500/20 rounded-full text-sm">Bootstrap</span>
-                <span className="px-2 py-1 bg-indigo-500/20 rounded-full text-sm">PostgreSQL</span>
+                <span className="px-2 py-1 bg-indigo-500/20 rounded-full text-sm">Laravel</span>
+                <span className="px-2 py-1 bg-indigo-500/20 rounded-full text-sm">MySQL</span>
+                <span className="px-2 py-1 bg-indigo-500/20 rounded-full text-sm">AJAX</span>
+                <span className="px-2 py-1 bg-indigo-500/20 rounded-full text-sm">Tailwind CSS</span>
               </div>
             </div>
             <div className="bg-[#1B1B4B]/50 p-8 rounded-lg border border-[#64ffda]/20 hover:border-[#64ffda] transition-all duration-300 transform hover:scale-105">
-              <Building2 className="w-10 h-10 text-[#64ffda] mb-4" />
-              <h3 className="text-2xl font-bold mb-4">Hotel Management</h3>
+              <a href="https://employee-task-manager.vercel.app/" target="_blank" rel="noopener noreferrer">
+                <GraduationCap className="w-10 h-10 text-[#64ffda] mb-4" />
+                <h3 className="text-2xl font-bold mb-4">Employee Task Manager</h3>
+              </a>
+              <p className="text-gray-300 mb-4">Web Development Project</p>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-2 py-1 bg-indigo-500/20 rounded-full text-sm">React.js</span>
+                <span className="px-2 py-1 bg-indigo-500/20 rounded-full text-sm">Context API</span>
+                <span className="px-2 py-1 bg-indigo-500/20 rounded-full text-sm">LocalStorage</span>
+              </div>
+            </div>
+            <div className="bg-[#1B1B4B]/50 p-8 rounded-lg border border-[#64ffda]/20 hover:border-[#64ffda] transition-all duration-300 transform hover:scale-105">
+              <a href="https://hoteltouristinn.vercel.app/" target="_blank" rel="noopener noreferrer">
+                <Building2 className="w-10 h-10 text-[#64ffda] mb-4" />
+                <h3 className="text-2xl font-bold mb-4">Hotel Tourist Inn</h3>
+              </a>
               <p className="text-gray-300 mb-4">Web Development Project</p>
               <div className="flex flex-wrap gap-2">
                 <span className="px-2 py-1 bg-indigo-500/20 rounded-full text-sm">PHP</span>
@@ -279,7 +298,8 @@ function App() {
               { icon: <Code2 className="w-8 h-8" />, name: "React" },
               { icon: <Code2 className="w-8 h-8" />, name: "Laravel" },
               { icon: <Database className="w-8 h-8" />, name: "MySQL" },
-              { icon: <Database className="w-8 h-8" />, name: "PostgreSQL" }
+              { icon: <Database className="w-8 h-8" />, name: "PostgreSQL" },
+              { icon: <FileCode2 className="w-8 h-8" />, name: "Tally Prime" }
             ].map((skill, index) => (
               <div key={index} className="bg-[#1B1B4B]/50 p-6 rounded-lg text-center group hover:bg-[#1B1B4B]/70 transition-all duration-300">
                 <div className="text-[#64ffda] mb-4 group-hover:scale-110 transition-transform duration-300">
@@ -332,7 +352,6 @@ function App() {
       </section>
     </div>
   );
-
-  }
+}
 
 export default App;
