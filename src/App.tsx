@@ -102,7 +102,7 @@ function App() {
   <span className="text-indigo-400">{"/>"}</span>
 </p>
 
-<a href="https://drive.google.com/file/d/1yV8l354L9Y3Ol7EnTXvGzVZQqmea9xfm/view?usp=drivesdk" target="_blank">
+<a href="https://drive.google.com/file/d/1W0186En1dywJsElD-X43328RFgMwrBAI/view?usp=sharing" target="_blank">
   <button className="bg-gradient-to-r from-indigo-500 to-purple-500 px-8 py-4 rounded-full font-bold hover:opacity-90 transition-all duration-200 shadow-lg shadow-indigo-500/25 flex items-center gap-3 mx-auto mt-4">
     <Download className=" text-3xl w-5 h-5" />
     Download Resume
