@@ -7,8 +7,11 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence, useInView } from 'framer-motion';
 
 /* ──────────────────────────────────────────────
-   DATA
+   DATA & CONSTANTS
    ────────────────────────────────────────────── */
+const RESUME_URL = 'https://drive.google.com/file/d/1ce1thK49kCGZbRcNRFNso3wlUu4uFfAp/view?usp=sharing';
+const HERO_BIKE_IMAGE = '/hero-bike.jpg';
+
 const NAV_LINKS = ['About', 'Experience', 'Projects', 'Skills', 'Contact'];
 
 const STATS = [
@@ -285,7 +288,7 @@ function Navbar() {
                 </button>
               ))}
               <a
-                href="https://drive.google.com/file/d/1W0186En1dywJsElD-X43328RFgMwrBAI/view?usp=sharing"
+                href={RESUME_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary !py-2 !px-5 !text-sm"
@@ -341,7 +344,7 @@ function Navbar() {
               </motion.button>
             ))}
             <a
-              href="https://drive.google.com/file/d/1W0186En1dywJsElD-X43328RFgMwrBAI/view?usp=sharing"
+              href={RESUME_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary mt-4"
@@ -430,101 +433,101 @@ function HeroSection() {
       <div className="section-container w-full relative z-10 pt-24 pb-16">
         <div className="max-w-4xl">
           {/* Tag */}
-          <motion.div
-            variants={fadeUp}
-            custom={0}
-            initial="hidden"
-            animate="visible"
+            <motion.div
+              variants={fadeUp}
+              custom={0}
+              initial="hidden"
+              animate="visible"
             className="flex items-center gap-3 mb-6"
-          >
+            >
             <div className="w-8 h-px bg-brand-orange" />
             <span className="section-tag">Software Development Engineer · SDE 1</span>
-          </motion.div>
+            </motion.div>
 
-          {/* Main heading */}
-          <motion.h1
-            variants={fadeUp}
-            custom={1}
-            initial="hidden"
-            animate="visible"
+            {/* Main heading */}
+            <motion.h1
+              variants={fadeUp}
+              custom={1}
+              initial="hidden"
+              animate="visible"
             className="section-heading mb-4"
             style={{ fontSize: 'clamp(52px, 10vw, 128px)' }}
-          >
-            Deepesh
-            <br />
+            >
+              Deepesh
+              <br />
             <span className="text-brand-orange">Dagar</span>
-          </motion.h1>
+            </motion.h1>
 
-          {/* Typed role */}
-          <motion.div
-            variants={fadeUp}
-            custom={2}
-            initial="hidden"
-            animate="visible"
+            {/* Typed role */}
+            <motion.div
+              variants={fadeUp}
+              custom={2}
+              initial="hidden"
+              animate="visible"
             className="flex items-center gap-3 mb-8"
-          >
+            >
             <span className="font-body text-xl md:text-2xl text-brand-muted font-light">
-              {typed}
+                {typed}
               <span className="inline-block w-0.5 h-6 bg-brand-orange ml-0.5 animate-pulse align-middle" />
-            </span>
-          </motion.div>
+              </span>
+            </motion.div>
 
-          {/* Description */}
-          <motion.p
-            variants={fadeUp}
-            custom={3}
-            initial="hidden"
-            animate="visible"
+            {/* Description */}
+            <motion.p
+              variants={fadeUp}
+              custom={3}
+              initial="hidden"
+              animate="visible"
             className="font-body text-base md:text-lg text-brand-muted leading-relaxed max-w-xl mb-10"
-          >
+            >
             Full-stack developer specializing in the MERN stack. I build{' '}
             <span className="text-white">scalable web applications</span>,{' '}
             real-time systems, and RESTful APIs — from zero to production.
-          </motion.p>
+            </motion.p>
 
-          {/* CTAs */}
-          <motion.div
-            variants={fadeUp}
-            custom={4}
-            initial="hidden"
-            animate="visible"
+            {/* CTAs */}
+            <motion.div
+              variants={fadeUp}
+              custom={4}
+              initial="hidden"
+              animate="visible"
             className="flex flex-wrap items-center gap-4 mb-16"
-          >
-            <button
-              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-              className="btn-primary"
             >
-              <span>→</span> View Work
-            </button>
-            <a
-              href="https://drive.google.com/file/d/1W0186En1dywJsElD-X43328RFgMwrBAI/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-outline"
-            >
-              <span>↓</span> Download Resume
-            </a>
-          </motion.div>
-
-          {/* Stats bar */}
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            animate="visible"
-            className="grid grid-cols-2 md:grid-cols-4 gap-px bg-brand-border rounded-sm overflow-hidden"
-          >
-            {STATS.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                variants={fadeUp}
-                custom={i}
-                className="bg-brand-surface px-6 py-5 flex flex-col gap-1"
+              <button
+                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+                className="btn-primary"
               >
+              <span>→</span> View Work
+              </button>
+              <a
+                href={RESUME_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline"
+              >
+                <span>↓</span> Download Resume
+              </a>
+            </motion.div>
+
+            {/* Stats bar */}
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              animate="visible"
+            className="grid grid-cols-2 md:grid-cols-4 gap-px bg-brand-border rounded-sm overflow-hidden"
+            >
+              {STATS.map((stat, i) => (
+                <motion.div
+                  key={stat.label}
+                  variants={fadeUp}
+                  custom={i}
+                className="bg-brand-surface px-6 py-5 flex flex-col gap-1"
+                >
                 <span className="stat-value">{stat.value}</span>
                 <span className="stat-label">{stat.label}</span>
-              </motion.div>
-            ))}
-          </motion.div>
+                </motion.div>
+              ))}
+            </motion.div>
         </div>
       </div>
 

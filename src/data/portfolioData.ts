@@ -54,7 +54,7 @@ export const personalInfo = {
   phone: '+91-6367867656',
   linkedin: 'https://www.linkedin.com/in/deepesh-dagar-45a389186/',
   github: 'https://github.com/DeepeshD23',
-  resumeUrl: 'https://drive.google.com/file/d/1W0186En1dywJsElD-X43328RFgMwrBAI/view?usp=sharing',
+  resumeUrl: 'https://drive.google.com/file/d/1ce1thK49kCGZbRcNRFNso3wlUu4uFfAp/view?usp=sharing',
   summary: `Full-stack developer specializing in the MERN stack (MongoDB, Express.js, React.js, Node.js). 
 Experienced in building scalable web applications, real-time systems, admin dashboards, RESTful APIs, 
 database optimization, and Agile workflows. Passionate about clean architecture, performance-first 
