@@ -173,6 +173,7 @@ function CustomCursor() {
   const ring = useRef<HTMLDivElement>(null);
   const [hovering, setHovering] = useState(false);
   const [enabled, setEnabled] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const mq = window.matchMedia('(hover: hover) and (pointer: fine)');
@@ -180,6 +181,7 @@ function CustomCursor() {
     if (!mq.matches) return;
 
     const onMove = (e: MouseEvent) => {
+      setVisible(true);
       if (dot.current) {
         dot.current.style.left = e.clientX - 4 + 'px';
         dot.current.style.top = e.clientY - 4 + 'px';
@@ -193,17 +195,23 @@ function CustomCursor() {
       const t = e.target as HTMLElement;
       setHovering(!!(t.tagName === 'BUTTON' || t.tagName === 'A' || t.closest('button') || t.closest('a')));
     };
+    const onLeave = () => setVisible(false);
     window.addEventListener('mousemove', onMove);
     window.addEventListener('mouseover', onOver);
-    return () => { window.removeEventListener('mousemove', onMove); window.removeEventListener('mouseover', onOver); };
+    document.addEventListener('mouseleave', onLeave);
+    return () => {
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('mouseover', onOver);
+      document.removeEventListener('mouseleave', onLeave);
+    };
   }, []);
 
   if (!enabled) return null;
 
   return (
     <>
-      <div ref={dot} className="cursor-dot" />
-      <div ref={ring} className={`cursor-ring ${hovering ? 'hovering' : ''}`} />
+      <div ref={dot} className="cursor-dot" style={{ opacity: visible ? 1 : 0 }} />
+      <div ref={ring} className={`cursor-ring ${hovering ? 'hovering' : ''}`} style={{ opacity: visible ? 1 : 0 }} />
     </>
   );
 }
