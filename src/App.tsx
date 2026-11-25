@@ -10,7 +10,6 @@ import { motion, useScroll, useTransform, AnimatePresence, useInView } from 'fra
    DATA & CONSTANTS
    ────────────────────────────────────────────── */
 const RESUME_URL = 'https://drive.google.com/file/d/1ce1thK49kCGZbRcNRFNso3wlUu4uFfAp/view?usp=sharing';
-const HERO_BIKE_IMAGE = '/hero-bike.jpg';
 
 const NAV_LINKS = ['About', 'Experience', 'Projects', 'Skills', 'Contact'];
 
@@ -160,26 +159,6 @@ const staggerContainer = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.1 } },
 };
-
-/* ──────────────────────────────────────────────
-   REUSABLE: SECTION REVEAL WRAPPER
-   ────────────────────────────────────────────── */
-function Reveal({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
-  return (
-    <motion.div
-      ref={ref}
-      variants={fadeUp}
-      custom={delay}
-      initial="hidden"
-      animate={inView ? 'visible' : 'hidden'}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
 
 /* ──────────────────────────────────────────────
    COMPONENT: CUSTOM CURSOR
