@@ -14,10 +14,10 @@ const RESUME_URL = 'https://drive.google.com/file/d/1ce1thK49kCGZbRcNRFNso3wlUu4
 const NAV_LINKS = ['About', 'Experience', 'Projects', 'Skills', 'Contact'];
 
 const STATS = [
-  { value: '1+', label: 'Years Experience' },
+  { value: '2+', label: 'Years Experience' },
   { value: '3+', label: 'Projects Shipped' },
-  { value: 'MERN', label: 'Stack Mastered' },
-  { value: '40%', label: 'API Speed Gain' },
+  { value: 'Full', label: 'Stack Developer' },
+  { value: 'AWS', label: 'Cloud Deployed' },
 ];
 
 const EXPERIENCE = [
@@ -28,26 +28,26 @@ const EXPERIENCE = [
     type: 'Full-Time',
     color: '#ff6b00',
     bullets: [
-      'Building scalable MERN-stack web applications serving production traffic',
-      'Cross-functional collaboration with design, QA, and product teams',
-      'Drove performance optimizations — reduced API response times by 40%',
+      'Develop and maintain scalable web applications using Laravel, Node.js, Express.js, and React.js',
+      'Collaborate with cross-functional teams to deliver high-quality software with performance optimization',
+      'Contribute to full-stack modules, REST APIs, dashboards, and AI-integrated features',
       'Implementing CI/CD best practices and structured code review workflows',
     ],
-    tech: ['React.js', 'Node.js', 'MongoDB', 'Express.js', 'TypeScript'],
+    tech: ['Laravel', 'React.js', 'Node.js', 'Express.js', 'MySQL', 'AWS'],
   },
   {
-    role: 'Software Development Intern',
+    role: 'Software Development Engineer Intern',
     company: 'Bytegrit Innovations Pvt. Ltd.',
     period: 'Jan 2025 — Apr 2025',
     type: 'Internship',
     color: '#888',
     bullets: [
-      'Optimized backend modules and REST APIs — improved query speed by 35%',
-      'Enhanced MongoDB query efficiency via indexing and aggregation pipelines',
-      'Built real-time dashboards with WebSocket-powered data visualization',
-      'Contributed to Agile sprints — stand-ups, planning, retrospectives',
+      'Enhanced backend modules and optimized REST APIs using Laravel, Node.js, and Express.js',
+      'Improved performance through efficient MySQL and MongoDB query optimization',
+      'Integrated admin dashboards with real-time data visualization',
+      'Worked in Agile sprints with daily standups, planning, and retrospectives',
     ],
-    tech: ['Node.js', 'MongoDB', 'Express.js', 'Socket.io', 'REST APIs'],
+    tech: ['Laravel', 'Node.js', 'Express.js', 'MySQL', 'MongoDB'],
   },
 ];
 
@@ -57,9 +57,9 @@ const PROJECTS = [
     number: '01',
     title: 'Real Estate Dashboard',
     subtitle: 'Broker Management System',
-    description: 'Role-based dashboard system with commission tracking, coupon management, cron-job automation, email notifications, and MongoDB seed scripts. Eliminated spreadsheet chaos for 80% of manual data entry.',
-    tech: ['Node.js', 'Express.js', 'MongoDB', 'React.js', 'node-cron', 'Nodemailer'],
-    metrics: ['Role-based access (Admin / Broker / Manager)', 'Automated commission reports via cron jobs', '80% reduction in manual data entry'],
+    description: 'Role-based dashboard (React.js frontend, Laravel REST API backend) for admins, agents, and part-time brokers. Features commission tracking, lead assignment, performance analytics, coupon system, automated email notifications, and Laravel CRON jobs. Deployed via CI/CD with GitHub Actions to AWS EC2.',
+    tech: ['React.js', 'Laravel', 'MySQL', 'Tailwind CSS', 'AWS EC2', 'CI/CD', 'Nginx'],
+    metrics: ['Role-based access (Admin / Agent / Broker)', 'CI/CD pipeline with GitHub Actions → AWS EC2', 'Automated follow-ups & coupon expiry via CRON'],
     github: 'https://github.com/DeepeshD23',
     live: null,
   },
@@ -67,23 +67,12 @@ const PROJECTS = [
     id: 'lead-mgmt',
     number: '02',
     title: 'Lead Management System',
-    subtitle: 'Multi-Role Pipeline & RBAC',
-    description: 'Centralized lead distribution platform with real-time AJAX chat, server-side DataTables with CSV export, and granular role-based access control across 4 user roles.',
-    tech: ['Node.js', 'Express.js', 'MongoDB', 'AJAX', 'DataTables', 'RBAC'],
-    metrics: ['Real-time team–lead chat', 'CSV export for reporting', 'Granular permissions across 4 roles'],
+    subtitle: 'MERN Stack · Multi-Role RBAC',
+    description: 'Multi-role MERN platform for lead distribution, tracking, and management for admins and vendors. Features real-time AJAX chat, automated follow-up reminders via node-cron, dynamic status updates, and server-side DataTables with CSV export.',
+    tech: ['MongoDB', 'Express.js', 'React.js', 'Node.js', 'Tailwind CSS', 'DataTables'],
+    metrics: ['Real-time AJAX chat for teams', 'Automated follow-up reminders (node-cron)', 'CSV export & server-side pagination'],
     github: 'https://github.com/DeepeshD23/Leads',
     live: 'https://github.com/DeepeshD23/Leads',
-  },
-  {
-    id: 'hotel',
-    number: '03',
-    title: 'Hotel Tourist Inn',
-    subtitle: 'Booking & Availability Platform',
-    description: 'Responsive hotel booking platform with real-time room availability checks, JWT-secured authentication, full CRUD REST APIs, and an admin panel for inventory management.',
-    tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'REST APIs'],
-    metrics: ['Real-time availability checks', 'JWT-based secure auth', 'Full CRUD for rooms, bookings, users'],
-    github: 'https://github.com/DeepeshD23',
-    live: 'https://hoteltouristinn.vercel.app/',
   },
 ];
 
@@ -91,18 +80,20 @@ const SKILLS_GROUPS = [
   {
     label: 'Languages',
     items: [
+      { name: 'PHP', level: 90 },
       { name: 'JavaScript (ES6+)', level: 92 },
       { name: 'TypeScript', level: 78 },
       { name: 'Python', level: 72 },
-      { name: 'SQL', level: 75 },
+      { name: 'SQL', level: 82 },
       { name: 'HTML5 / CSS3', level: 90 },
     ],
   },
   {
     label: 'Frameworks',
     items: [
-      { name: 'Node.js', level: 90 },
-      { name: 'Express.js', level: 88 },
+      { name: 'Laravel', level: 90 },
+      { name: 'Node.js', level: 88 },
+      { name: 'Express.js', level: 86 },
       { name: 'React.js', level: 85 },
       { name: 'Tailwind CSS', level: 82 },
       { name: 'jQuery / AJAX', level: 75 },
@@ -111,29 +102,43 @@ const SKILLS_GROUPS = [
   {
     label: 'Databases',
     items: [
-      { name: 'MongoDB', level: 88 },
-      { name: 'MySQL', level: 78 },
+      { name: 'MySQL', level: 88 },
+      { name: 'MongoDB', level: 85 },
       { name: 'PostgreSQL', level: 70 },
-      { name: 'Query Optimization', level: 80 },
+      { name: 'Query Optimization', level: 82 },
+      { name: 'Schema Design', level: 80 },
     ],
   },
   {
-    label: 'Tools & DevOps',
+    label: 'Cloud & DevOps',
     items: [
+      { name: 'AWS EC2', level: 78 },
+      { name: 'CI/CD (GitHub Actions)', level: 80 },
+      { name: 'Nginx', level: 75 },
       { name: 'Git / GitHub', level: 88 },
+      { name: 'PM2 / Linux', level: 75 },
       { name: 'Postman', level: 85 },
-      { name: 'PM2 / Linux', level: 72 },
-      { name: 'Cron Jobs', level: 78 },
+    ],
+  },
+  {
+    label: 'AI & More',
+    items: [
+      { name: 'LLM / AI API Integration', level: 78 },
+      { name: 'Prompt Engineering', level: 75 },
+      { name: 'AI Code Editors (Cursor, Copilot)', level: 80 },
+      { name: 'System Design', level: 76 },
+      { name: 'Agile / Scrum', level: 85 },
     ],
   },
 ];
 
 const TECH_MARQUEE = [
-  'React.js', '///', 'Node.js', '///', 'MongoDB', '///', 'Express.js', '///',
-  'TypeScript', '///', 'REST APIs', '///', 'Socket.io', '///', 'JWT', '///',
-  'Postman', '///', 'Git', '///', 'PM2', '///', 'Linux', '///', 'Tailwind', '///',
-  'React.js', '///', 'Node.js', '///', 'MongoDB', '///', 'Express.js', '///',
-  'TypeScript', '///', 'REST APIs', '///', 'Socket.io', '///', 'JWT', '///',
+  'Laravel', '///', 'React.js', '///', 'Node.js', '///', 'MySQL', '///',
+  'MongoDB', '///', 'Express.js', '///', 'AWS', '///', 'TypeScript', '///',
+  'REST APIs', '///', 'CI/CD', '///', 'PHP', '///', 'Tailwind', '///',
+  'Nginx', '///', 'Git', '///', 'AI Integration', '///', 'Postman', '///',
+  'Laravel', '///', 'React.js', '///', 'Node.js', '///', 'MySQL', '///',
+  'MongoDB', '///', 'Express.js', '///', 'AWS', '///', 'TypeScript', '///',
 ];
 
 /* ──────────────────────────────────────────────
@@ -314,7 +319,6 @@ function Navbar() {
                 key={link}
                 onClick={() => scrollTo(link)}
                 className="nav-link text-white"
-                style={{ fontSize: '40px', fontStyle: 'italic' }}
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.08 }}
@@ -346,7 +350,7 @@ function HeroSection() {
   const opacity = useTransform(scrollY, [0, 400], [1, 0]);
 
   const [typed, setTyped] = useState('');
-  const roles = ['MERN Stack Specialist', 'Full-Stack Developer', 'API Architect', 'React + Node.js Dev'];
+  const roles = ['Full-Stack Developer', 'Laravel + React.js Dev', 'MERN Stack Specialist', 'API Architect', 'AWS Cloud Deployer'];
   const [roleIdx, setRoleIdx] = useState(0);
   const [charIdx, setCharIdx] = useState(0);
   const [deleting, setDeleting] = useState(false);
@@ -420,7 +424,7 @@ function HeroSection() {
             className="flex items-center gap-3 mb-6"
             >
             <div className="w-8 h-px bg-brand-orange" />
-            <span className="section-tag">Software Development Engineer · SDE 1</span>
+            <span className="section-tag">Full-Stack Developer · SDE 1</span>
             </motion.div>
 
             {/* Main heading */}
@@ -459,9 +463,9 @@ function HeroSection() {
               animate="visible"
             className="font-body text-base md:text-lg text-brand-muted leading-relaxed max-w-xl mb-10"
             >
-            Full-stack developer specializing in the MERN stack. I build{' '}
-            <span className="text-white">scalable web applications</span>,{' '}
-            real-time systems, and RESTful APIs — from zero to production.
+            Full-stack developer with nearly 2 years of experience in{' '}
+            <span className="text-white">Laravel, React.js, Node.js & AWS</span>.{' '}
+            I build scalable web applications, real-time systems, and RESTful APIs — from zero to production.
             </motion.p>
 
             {/* CTAs */}
@@ -588,9 +592,9 @@ function AboutSection() {
               animate={inView ? 'visible' : 'hidden'}
               className="font-body text-brand-muted leading-relaxed mb-6 text-base"
             >
-              Full-stack developer specializing in the <span className="text-white font-medium">MERN stack</span> (MongoDB, Express.js, React.js, Node.js). 
-              Experienced in building scalable web applications, real-time systems, 
-              admin dashboards, and RESTful APIs.
+              Full-stack developer with nearly 2 years of experience in <span className="text-white font-medium">PHP Laravel</span> and the{' '}
+              <span className="text-white font-medium">MERN stack</span> (MongoDB, Express.js, React.js, Node.js).{' '}
+              Skilled in RESTful API development, MySQL/MongoDB query optimization, AI integration, and CI/CD with AWS EC2 deployment.
             </motion.p>
             <motion.p
               variants={fadeLeft}
@@ -599,7 +603,7 @@ function AboutSection() {
               animate={inView ? 'visible' : 'hidden'}
               className="font-body text-brand-muted leading-relaxed mb-10 text-base"
             >
-              I work in Agile environments, obsess over performance, and believe clean 
+              I work in Agile/Scrum teams, obsess over performance, and believe clean 
               architecture is the difference between code that lasts and code that breaks.
             </motion.p>
 
@@ -635,11 +639,12 @@ function AboutSection() {
               <div className="space-y-1 text-xs md:text-sm leading-relaxed">
                 <div><span className="text-[#569cd6]">const</span> <span className="text-[#9cdcfe]">developer</span> <span className="text-white">=</span> <span className="text-[#4ec9b0]">{'{'}</span></div>
                 <div className="pl-5"><span className="text-[#9cdcfe]">name</span><span className="text-white">:</span> <span className="text-brand-orange">"Deepesh Dagar"</span><span className="text-white">,</span></div>
-                <div className="pl-5"><span className="text-[#9cdcfe]">role</span><span className="text-white">:</span> <span className="text-brand-orange">"SDE 1 — MERN"</span><span className="text-white">,</span></div>
+                <div className="pl-5"><span className="text-[#9cdcfe]">role</span><span className="text-white">:</span> <span className="text-brand-orange">"SDE 1 — Full-Stack"</span><span className="text-white">,</span></div>
                 <div className="pl-5"><span className="text-[#9cdcfe]">location</span><span className="text-white">:</span> <span className="text-brand-orange">"Ahmedabad, India"</span><span className="text-white">,</span></div>
                 <div className="pl-5"><span className="text-[#9cdcfe]">stack</span><span className="text-white">: [</span></div>
-                <div className="pl-10"><span className="text-brand-orange">"MongoDB"</span><span className="text-white">,</span> <span className="text-brand-orange">"Express"</span><span className="text-white">,</span></div>
-                <div className="pl-10"><span className="text-brand-orange">"React"</span><span className="text-white">,</span> <span className="text-brand-orange">"Node.js"</span></div>
+                <div className="pl-10"><span className="text-brand-orange">"Laravel"</span><span className="text-white">,</span> <span className="text-brand-orange">"React"</span><span className="text-white">,</span></div>
+                <div className="pl-10"><span className="text-brand-orange">"Node.js"</span><span className="text-white">,</span> <span className="text-brand-orange">"MySQL"</span><span className="text-white">,</span></div>
+                <div className="pl-10"><span className="text-brand-orange">"MongoDB"</span><span className="text-white">,</span> <span className="text-brand-orange">"AWS"</span></div>
                 <div className="pl-5"><span className="text-white">],</span></div>
                 <div className="pl-5"><span className="text-[#9cdcfe]">available</span><span className="text-white">:</span> <span className="text-[#569cd6]">true</span><span className="text-white">,</span></div>
                 <div><span className="text-[#4ec9b0]">{'}'}</span><span className="text-white">;</span></div>
@@ -1006,8 +1011,8 @@ function SkillsSection() {
               <span className="section-tag block mb-4">Education</span>
               <div className="space-y-4">
                 {[
-                  { degree: 'MCA — Master of Computer Applications', school: 'GLS University, Ahmedabad', period: '2023–2025', score: 'CGPA 7.08' },
-                  { degree: 'BCA — Bachelor of Computer Applications', school: 'Mohanlal Sukhadia University', period: '2021–2023', score: '79%' },
+                  { degree: 'MCA — Master of Computer Applications', school: 'GLS University, Ahmedabad, Gujarat', period: 'Aug 2023 – Jul 2025', score: 'CGPA 7.08' },
+                  { degree: 'BCA — Bachelor of Computer Applications', school: 'Mohanlal Sukhadia University, Udaipur, Rajasthan', period: 'Aug 2021 – Jul 2023', score: '79%' },
                 ].map((edu, i) => (
                   <div key={i} className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 py-3 border-b border-brand-border last:border-0">
                     <div>
