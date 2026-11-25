@@ -172,8 +172,13 @@ function CustomCursor() {
   const dot = useRef<HTMLDivElement>(null);
   const ring = useRef<HTMLDivElement>(null);
   const [hovering, setHovering] = useState(false);
+  const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
+    const mq = window.matchMedia('(hover: hover) and (pointer: fine)');
+    setEnabled(mq.matches);
+    if (!mq.matches) return;
+
     const onMove = (e: MouseEvent) => {
       if (dot.current) {
         dot.current.style.left = e.clientX - 4 + 'px';
@@ -192,6 +197,8 @@ function CustomCursor() {
     window.addEventListener('mouseover', onOver);
     return () => { window.removeEventListener('mousemove', onMove); window.removeEventListener('mouseover', onOver); };
   }, []);
+
+  if (!enabled) return null;
 
   return (
     <>
@@ -233,6 +240,18 @@ function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMenuOpen(false);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [menuOpen]);
+
   const scrollTo = (id: string) => {
     document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: 'smooth' });
     setMenuOpen(false);
@@ -244,8 +263,8 @@ function Navbar() {
         initial={{ y: -60, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? 'bg-black/90 backdrop-blur-md border-b border-white/5' : 'bg-transparent'
+        className={`fixed top-0 left-0 right-0 z-[9100] transition-all duration-300 ${
+          scrolled || menuOpen ? 'bg-black/90 backdrop-blur-md border-b border-white/5' : 'bg-transparent'
         }`}
       >
         <div className="section-container">
@@ -261,12 +280,12 @@ function Navbar() {
             </button>
 
             {/* Desktop Nav */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-4 lg:gap-8">
               {NAV_LINKS.map((link) => (
                 <button
                   key={link}
                   onClick={() => scrollTo(link)}
-                  className={`nav-link ${active === link.toLowerCase() ? 'active' : ''}`}
+                  className={`nav-link whitespace-nowrap !text-sm lg:!text-[15px] ${active === link.toLowerCase() ? 'active' : ''}`}
                 >
                   {link}
                 </button>
@@ -275,7 +294,7 @@ function Navbar() {
                 href={RESUME_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary !py-2 !px-5 !text-sm"
+                className="btn-primary !py-2 !px-3.5 lg:!px-5 !text-xs lg:!text-sm whitespace-nowrap"
               >
                 <span>↓</span> Resume
               </a>
@@ -283,9 +302,10 @@ function Navbar() {
 
             {/* Mobile hamburger */}
             <button
-              className="md:hidden flex flex-col gap-1.5 p-2"
+              className="md:hidden flex flex-col items-center justify-center gap-1.5 min-w-[44px] min-h-[44px] -mr-2"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle menu"
+              aria-expanded={menuOpen}
             >
               <motion.span
                 animate={menuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
@@ -413,7 +433,7 @@ function HeroSection() {
         ))}
       </div>
 
-      <div className="section-container w-full relative z-10 pt-24 pb-16">
+      <div className="section-container w-full relative z-10 pt-24 pb-16 sm:pb-28">
         <div className="max-w-4xl">
           {/* Tag */}
             <motion.div
@@ -447,7 +467,7 @@ function HeroSection() {
               custom={2}
               initial="hidden"
               animate="visible"
-            className="flex items-center gap-3 mb-8"
+            className="flex items-center gap-3 mb-8 min-h-[1.75rem]"
             >
             <span className="font-body text-xl md:text-2xl text-brand-muted font-light">
                 {typed}
@@ -474,7 +494,7 @@ function HeroSection() {
               custom={4}
               initial="hidden"
               animate="visible"
-            className="flex flex-wrap items-center gap-4 mb-16"
+            className="flex flex-wrap items-center gap-3 sm:gap-4 mb-12 sm:mb-16"
             >
               <button
                 onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
@@ -504,7 +524,7 @@ function HeroSection() {
                   key={stat.label}
                   variants={fadeUp}
                   custom={i}
-                className="bg-brand-surface px-6 py-5 flex flex-col gap-1"
+                className="bg-brand-surface px-4 py-4 sm:px-6 sm:py-5 flex flex-col gap-1"
                 >
                 <span className="stat-value">{stat.value}</span>
                 <span className="stat-label">{stat.label}</span>
@@ -516,7 +536,7 @@ function HeroSection() {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2"
         animate={{ y: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
       >
@@ -555,10 +575,10 @@ function AboutSection() {
   const inView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section id="about" className="py-28 bg-brand-dark relative overflow-hidden">
+    <section id="about" className="py-20 md:py-28 bg-brand-dark relative overflow-hidden">
       <div className="section-number">01</div>
       <div className="section-container" ref={ref}>
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           {/* Left */}
           <div>
             <motion.span
@@ -628,15 +648,15 @@ function AboutSection() {
             initial="hidden"
             animate={inView ? 'visible' : 'hidden'}
           >
-            <div className="card-dark p-6 font-mono text-sm relative">
+            <div className="card-dark p-4 sm:p-6 font-mono text-sm relative">
               {/* Traffic light buttons */}
-              <div className="flex gap-1.5 mb-5">
+              <div className="flex items-center gap-1.5 mb-5">
                 <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
                 <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
                 <div className="w-3 h-3 rounded-full bg-[#28c840]" />
                 <span className="ml-3 text-xs text-brand-dimmed font-mono">deepesh.config.ts</span>
               </div>
-              <div className="space-y-1 text-xs md:text-sm leading-relaxed">
+              <div className="space-y-1 text-xs md:text-sm leading-relaxed overflow-x-auto">
                 <div><span className="text-[#569cd6]">const</span> <span className="text-[#9cdcfe]">developer</span> <span className="text-white">=</span> <span className="text-[#4ec9b0]">{'{'}</span></div>
                 <div className="pl-5"><span className="text-[#9cdcfe]">name</span><span className="text-white">:</span> <span className="text-brand-orange">"Deepesh Dagar"</span><span className="text-white">,</span></div>
                 <div className="pl-5"><span className="text-[#9cdcfe]">role</span><span className="text-white">:</span> <span className="text-brand-orange">"SDE 1 — Full-Stack"</span><span className="text-white">,</span></div>
@@ -654,7 +674,7 @@ function AboutSection() {
             </div>
 
             {/* Contact quick-links */}
-            <div className="mt-6 grid grid-cols-2 gap-3">
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
                 { label: 'Email', value: 'dipeshdagar9@gmail.com', href: 'mailto:dipeshdagar9@gmail.com' },
                 { label: 'Phone', value: '+91-6367867656', href: 'tel:+916367867656' },
@@ -666,7 +686,7 @@ function AboutSection() {
                   href={item.href}
                   target={item.href.startsWith('http') ? '_blank' : undefined}
                   rel="noopener noreferrer"
-                  className="card-dark p-3 block group"
+                  className="card-dark p-3 block group min-w-0"
                 >
                   <span className="section-tag text-[10px] block mb-1">{item.label}</span>
                   <span className="font-mono text-xs text-brand-muted group-hover:text-brand-orange transition-colors truncate block">
@@ -690,11 +710,11 @@ function ExperienceSection() {
   const inView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section id="experience" className="py-28 bg-brand-surface relative overflow-hidden">
+    <section id="experience" className="py-20 md:py-28 bg-brand-surface relative overflow-hidden">
       <div className="section-number">02</div>
       <div className="section-container" ref={ref}>
         {/* Heading */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 md:mb-16">
           <div>
             <motion.span variants={fadeLeft} custom={0} initial="hidden" animate={inView ? 'visible' : 'hidden'} className="section-tag block mb-4">— Where I've Ridden</motion.span>
             <motion.h2 variants={fadeLeft} custom={1} initial="hidden" animate={inView ? 'visible' : 'hidden'} className="section-heading" style={{ fontSize: 'clamp(36px, 5vw, 72px)' }}>
@@ -716,18 +736,18 @@ function ExperienceSection() {
               initial="hidden"
               animate={inView ? 'visible' : 'hidden'}
             >
-              <div className="card-dark p-6 md:p-8 relative overflow-hidden group">
+              <div className="card-dark p-5 sm:p-6 md:p-8 relative overflow-hidden group">
                 {/* Accent bar */}
                 <div
                   className="absolute left-0 top-0 bottom-0 w-1 transition-all duration-300 group-hover:w-1.5"
                   style={{ background: exp.color }}
                 />
 
-                <div className="pl-4 md:pl-6">
+                <div className="pl-3 sm:pl-4 md:pl-6">
                   {/* Top row */}
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
                     <div>
-                      <div className="flex items-center gap-3 mb-1">
+                      <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-1.5">
                         <span
                           className="font-mono text-xs px-2 py-0.5 rounded-sm font-medium"
                           style={{ background: `${exp.color}20`, color: exp.color, border: `1px solid ${exp.color}30` }}
@@ -783,11 +803,11 @@ function ProjectsSection() {
   const [activeProject, setActiveProject] = useState<string | null>(null);
 
   return (
-    <section id="projects" className="py-28 bg-brand-dark relative overflow-hidden">
+    <section id="projects" className="py-20 md:py-28 bg-brand-dark relative overflow-hidden">
       <div className="section-number">03</div>
       <div className="section-container" ref={ref}>
         {/* Heading */}
-        <div className="mb-16">
+        <div className="mb-10 md:mb-16">
           <motion.span variants={fadeUp} custom={0} initial="hidden" animate={inView ? 'visible' : 'hidden'} className="section-tag block mb-4">— What I've Built</motion.span>
           <motion.h2 variants={fadeUp} custom={1} initial="hidden" animate={inView ? 'visible' : 'hidden'} className="section-heading" style={{ fontSize: 'clamp(36px, 5vw, 72px)' }}>
             Shipped Projects
@@ -811,14 +831,14 @@ function ProjectsSection() {
                   onClick={() => setActiveProject(isOpen ? null : project.id)}
                 >
                   <div className="project-overlay" />
-                  <div className="p-6 md:p-8">
+                  <div className="p-5 sm:p-6 md:p-8">
                     {/* Row: number, title, arrow */}
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex items-start gap-5">
-                        <span className="font-display font-black italic text-5xl md:text-6xl text-brand-orange/20 leading-none mt-1">
+                    <div className="flex items-start justify-between gap-3 sm:gap-4">
+                      <div className="flex items-start gap-3 sm:gap-5 min-w-0">
+                        <span className="font-display font-black italic text-4xl sm:text-5xl md:text-6xl text-brand-orange/20 leading-none mt-1 flex-shrink-0">
                           {project.number}
                         </span>
-                        <div>
+                        <div className="min-w-0">
                           <p className="font-mono text-xs text-brand-muted mb-1">{project.subtitle}</p>
                           <h3 className="font-display font-bold italic text-2xl md:text-3xl text-white group-hover:text-brand-orange transition-colors">
                             {project.title}
@@ -879,7 +899,7 @@ function ProjectsSection() {
                                     </li>
                                   ))}
                                 </ul>
-                                <div className="flex gap-3">
+                                <div className="flex flex-wrap gap-3">
                                   {project.github && (
                                     <a
                                       href={project.github}
@@ -929,11 +949,11 @@ function SkillsSection() {
   const [activeGroup, setActiveGroup] = useState(0);
 
   return (
-    <section id="skills" className="py-28 bg-brand-surface relative overflow-hidden">
+    <section id="skills" className="py-20 md:py-28 bg-brand-surface relative overflow-hidden">
       <div className="section-number">04</div>
       <div className="section-container" ref={ref}>
         {/* Heading */}
-        <div className="mb-16">
+        <div className="mb-10 md:mb-16">
           <motion.span variants={fadeUp} custom={0} initial="hidden" animate={inView ? 'visible' : 'hidden'} className="section-tag block mb-4">— Under the Hood</motion.span>
           <motion.h2 variants={fadeUp} custom={1} initial="hidden" animate={inView ? 'visible' : 'hidden'} className="section-heading" style={{ fontSize: 'clamp(36px, 5vw, 72px)' }}>
             Tech Stack
@@ -947,7 +967,7 @@ function SkillsSection() {
               variants={staggerContainer}
               initial="hidden"
               animate={inView ? 'visible' : 'hidden'}
-              className="flex md:flex-col gap-px bg-brand-border overflow-x-auto md:overflow-x-visible"
+              className="flex flex-wrap md:flex-col gap-px bg-brand-border"
             >
               {SKILLS_GROUPS.map((group, i) => (
                 <motion.button
@@ -955,7 +975,7 @@ function SkillsSection() {
                   variants={fadeLeft}
                   custom={i}
                   onClick={() => setActiveGroup(i)}
-                  className={`flex-shrink-0 md:flex-shrink text-left px-6 py-4 font-display font-bold italic text-lg md:text-xl uppercase tracking-wide transition-all duration-200 ${
+                  className={`flex-auto md:flex-none text-left px-4 py-3 sm:px-5 sm:py-3.5 md:px-6 md:py-4 font-display font-bold italic text-base sm:text-lg md:text-xl uppercase tracking-wide transition-all duration-200 ${
                     activeGroup === i
                       ? 'bg-brand-dark text-brand-orange'
                       : 'bg-brand-surface text-brand-muted hover:text-white hover:bg-brand-dark'
@@ -1019,7 +1039,7 @@ function SkillsSection() {
                       <p className="font-display font-bold italic text-base text-white">{edu.degree}</p>
                       <p className="font-body text-xs text-brand-muted mt-0.5">{edu.school}</p>
                     </div>
-                    <div className="text-right flex-shrink-0">
+                    <div className="text-left sm:text-right flex-shrink-0">
                       <p className="font-mono text-xs text-brand-orange">{edu.score}</p>
                       <p className="font-mono text-xs text-brand-dimmed">{edu.period}</p>
                     </div>
@@ -1080,13 +1100,13 @@ function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-28 bg-brand-dark relative overflow-hidden">
+    <section id="contact" className="py-20 md:py-28 bg-brand-dark relative overflow-hidden">
       <div className="section-number">05</div>
       {/* Background glow */}
       <div className="absolute inset-0 bg-orange-glow pointer-events-none" />
 
       <div className="section-container" ref={ref}>
-        <div className="grid md:grid-cols-2 gap-16 items-start">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
           {/* Left */}
           <div>
             <motion.span variants={fadeLeft} custom={0} initial="hidden" animate={inView ? 'visible' : 'hidden'} className="section-tag block mb-4">— Let's Build Together</motion.span>
@@ -1137,9 +1157,9 @@ function ContactSection() {
                   <div className="w-10 h-10 bg-brand-surface border border-brand-border flex items-center justify-center flex-shrink-0 group-hover:border-brand-orange/50 group-hover:bg-brand-orange/5 transition-all duration-200">
                     <span className="text-base">{item.icon}</span>
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="font-mono text-[10px] text-brand-dimmed uppercase tracking-wider mb-0.5">{item.label}</p>
-                    <p className="font-body text-sm text-brand-muted group-hover:text-brand-orange transition-colors">{item.value}</p>
+                    <p className="font-body text-sm text-brand-muted group-hover:text-brand-orange transition-colors break-words">{item.value}</p>
                   </div>
                 </motion.a>
               ))}
@@ -1169,7 +1189,7 @@ function ContactSection() {
                     placeholder={field.placeholder}
                     value={form[field.id as 'name' | 'email']}
                     onChange={(e) => setForm(f => ({ ...f, [field.id]: e.target.value }))}
-                    className="w-full bg-brand-surface border border-brand-border rounded-none px-4 py-3 font-body text-sm text-white placeholder-brand-dimmed focus:outline-none focus:border-brand-orange transition-colors"
+                    className="w-full bg-brand-surface border border-brand-border rounded-none px-4 py-3 font-body text-base md:text-sm text-white placeholder-brand-dimmed focus:outline-none focus:border-brand-orange transition-colors"
                   />
                 </div>
               ))}
@@ -1184,7 +1204,7 @@ function ContactSection() {
                   placeholder="Tell me about your project..."
                   value={form.message}
                   onChange={(e) => setForm(f => ({ ...f, message: e.target.value }))}
-                  className="w-full bg-brand-surface border border-brand-border rounded-none px-4 py-3 font-body text-sm text-white placeholder-brand-dimmed focus:outline-none focus:border-brand-orange transition-colors resize-none"
+                  className="w-full bg-brand-surface border border-brand-border rounded-none px-4 py-3 font-body text-base md:text-sm text-white placeholder-brand-dimmed focus:outline-none focus:border-brand-orange transition-colors resize-none"
                 />
               </div>
               <button type="submit" className="btn-primary w-full justify-center">
@@ -1212,7 +1232,7 @@ function Footer() {
             </div>
             <span className="font-display font-bold text-sm tracking-wider text-white">DEEPESH DAGAR</span>
           </div>
-          <p className="font-mono text-xs text-brand-dimmed">
+          <p className="font-mono text-xs text-brand-dimmed text-center">
             Designed & Built by Deepesh Dagar · {new Date().getFullYear()}
           </p>
           <div className="flex gap-5">

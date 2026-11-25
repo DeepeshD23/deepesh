@@ -23,13 +23,14 @@ html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: #ff6b00 #111;
+  overflow-x: clip;
 }
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
   background-color: #0a0a0a;
   color: #f0f0f0;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -104,10 +105,14 @@ body {
 .section-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 20px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
+  .section-container { padding: 0 32px; }
+}
+
+@media (min-width: 1024px) {
   .section-container { padding: 0 48px; }
 }
 
